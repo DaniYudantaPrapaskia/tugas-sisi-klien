@@ -1,3 +1,3 @@
 export default function Label({ children }) {
-   return <label className="block mb-1 font-medium">{children}</label>;
+   return <label className="block mb-2 font-medium text-slate-700">{children}</label>;
 }

@@ -1,12 +1,25 @@
+import { useState } from "react";
 import { FaRegEdit, FaEye } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
+import Pagination from "../../components/molecules/Pagination";
+
+const PAGE_SIZE = 5;
 
 export default function MahasiswaTable({
    mahasiswa,
    openEditModal,
    onDelete,
    onView,
+   readOnly = false,
 }) {
+   const [currentPage, setCurrentPage] = useState(1);
+
+   const totalPages = Math.ceil(mahasiswa.length / PAGE_SIZE);
+   const paginated = mahasiswa.slice(
+      (currentPage - 1) * PAGE_SIZE,
+      currentPage * PAGE_SIZE
+   );
+
    const handleDelete = (nim) => {
       onDelete(nim);
    };
@@ -29,13 +42,13 @@ export default function MahasiswaTable({
                   </tr>
                </thead>
                <tbody>
-                  {mahasiswa.length > 0 ? (
-                     mahasiswa.map((item, index) => (
+                  {paginated.length > 0 ? (
+                     paginated.map((item, index) => (
                         <tr
                            key={item.nim}
                            className="border-t hover:bg-gray-50"
                         >
-                           <td className="p-3">{index + 1}</td>
+                           <td className="p-3">{(currentPage - 1) * PAGE_SIZE + index + 1}</td>
                            <td className="p-3">{item.nim}</td>
                            <td className="p-3">{item.nama}</td>
                            <td className="p-3">{item.email}</td>
@@ -45,28 +58,32 @@ export default function MahasiswaTable({
                            <td className="p-3">
                               {item.status ? "Aktif" : "Nonaktif"}
                            </td>
-                           <td className="p-3 text-center space-x-2">
-                              <button
-                                 className="inline-flex items-center justify-center bg-blue-400 px-3 py-1 rounded text-sm hover:bg-blue-500 w-10 h-10"
-                                 onClick={() => onView(item.id)}
-                              >
-                                 <FaEye />
-                              </button>
-                              <button
-                                 type="button"
-                                 className="inline-flex items-center justify-center bg-yellow-400 px-3 py-1 rounded text-sm hover:bg-yellow-500 w-10 h-10"
-                                 onClick={() => openEditModal(item)}
-                              >
-                                 <FaRegEdit />
-                              </button>
-                              <button
-                                 type="button"
-                                 className="inline-flex items-center justify-center bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600 w-10 h-10"
-                                 onClick={() => handleDelete(item.nim)}
-                              >
-                                 <MdDeleteOutline />
-                              </button>
-                           </td>
+                            <td className="p-3 text-center space-x-2">
+                               <button
+                                  className="inline-flex items-center justify-center bg-blue-400 px-3 py-1 rounded text-sm hover:bg-blue-500 w-10 h-10"
+                                  onClick={() => onView(item.id)}
+                               >
+                                  <FaEye />
+                               </button>
+                               {!readOnly && openEditModal && (
+                                  <button
+                                     type="button"
+                                     className="inline-flex items-center justify-center bg-yellow-400 px-3 py-1 rounded text-sm hover:bg-yellow-500 w-10 h-10"
+                                     onClick={() => openEditModal(item)}
+                                  >
+                                     <FaRegEdit />
+                                  </button>
+                               )}
+                               {!readOnly && onDelete && (
+                                  <button
+                                     type="button"
+                                     className="inline-flex items-center justify-center bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600 w-10 h-10"
+                                     onClick={() => handleDelete(item.nim)}
+                                  >
+                                     <MdDeleteOutline />
+                                  </button>
+                               )}
+                            </td>
                         </tr>
                      ))
                   ) : (
@@ -82,6 +99,11 @@ export default function MahasiswaTable({
                </tbody>
             </table>
          </div>
+         <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={setCurrentPage}
+         />
       </>
    );
 }

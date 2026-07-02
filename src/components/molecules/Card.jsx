@@ -1,6 +1,6 @@
 export default function Card({ children }) {
    return (
-      <div className="bg-white p-6 rounded-2xl shadow-md md:w-96 md:h-96">
+      <div className="bg-white p-8 rounded-xl shadow-lg md:w-[420px] animate-fadeIn">
          {children}
       </div>
    );

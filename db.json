@@ -1,0 +1,297 @@
+{
+  "mahasiswa": [
+    {
+      "id": "1",
+      "nim": "A11.2022.12345",
+      "nama": "Budi Santoso",
+      "email": "budi@email.com",
+      "ipk": 3.75,
+      "semester": 6,
+      "no_telp": "081234567890",
+      "gender": "Male",
+      "status": true,
+      "max_sks": 24
+    },
+    {
+      "id": "2",
+      "nim": "A11.2022.12346",
+      "nama": "Andi Wijaya",
+      "email": "andi@email.com",
+      "ipk": 3.6,
+      "semester": 6,
+      "no_telp": "082345678901",
+      "gender": "Male",
+      "status": true,
+      "max_sks": 24
+    },
+    {
+      "id": "3",
+      "nim": "A11.2021.12347",
+      "nama": "Siti Rahma",
+      "email": "siti@email.com",
+      "ipk": 3.9,
+      "semester": 8,
+      "no_telp": "083456789012",
+      "gender": "Female",
+      "status": true,
+      "max_sks": 24
+    },
+    {
+      "id": "4",
+      "nim": "A11.2023.12348",
+      "nama": "Dewi Lestari",
+      "email": "dewi@email.com",
+      "ipk": 3.5,
+      "semester": 4,
+      "no_telp": "084567890123",
+      "gender": "Female",
+      "status": true,
+      "max_sks": 24
+    },
+    {
+      "id": "5",
+      "nim": "A11.2022.12349",
+      "nama": "Rizky Pratama",
+      "email": "rizky@email.com",
+      "ipk": 3.2,
+      "semester": 6,
+      "no_telp": "085678901234",
+      "gender": "Male",
+      "status": true,
+      "max_sks": 24
+    },
+    {
+      "id": "6",
+      "nim": "A11.2021.12350",
+      "nama": "Putri Ayu",
+      "email": "putri@email.com",
+      "ipk": 3.85,
+      "semester": 8,
+      "no_telp": "086789012345",
+      "gender": "Female",
+      "status": true,
+      "max_sks": 24
+    },
+    {
+      "id": "7",
+      "nim": "A11.2023.12351",
+      "nama": "Fajar Nugroho",
+      "email": "fajar@email.com",
+      "ipk": 3.1,
+      "semester": 4,
+      "no_telp": "087890123456",
+      "gender": "Male",
+      "status": true,
+      "max_sks": 24
+    },
+    {
+      "id": "8",
+      "nim": "A11.2022.12352",
+      "nama": "Lina Marlina",
+      "email": "lina@email.com",
+      "ipk": 3.65,
+      "semester": 6,
+      "no_telp": "088901234567",
+      "gender": "Female",
+      "status": true,
+      "max_sks": 24
+    }
+  ],
+  "kelas": [
+    {
+      "id": "1",
+      "kode_kelas": "IF101-A",
+      "nama_kelas": "Algoritma dan Pemrograman - Kelas A",
+      "matkul_id": "1",
+      "dosen_id": "1",
+      "semester": 1,
+      "tahun_ajaran": "2024/2025",
+      "kapasitas": 30,
+      "mahasiswa_ids": ["1", "2", "3"]
+    },
+    {
+      "id": "2",
+      "kode_kelas": "IF102-A",
+      "nama_kelas": "Basis Data - Kelas A",
+      "matkul_id": "2",
+      "dosen_id": "1",
+      "semester": 2,
+      "tahun_ajaran": "2024/2025",
+      "kapasitas": 30,
+      "mahasiswa_ids": ["4", "5"]
+    },
+    {
+      "id": "3",
+      "kode_kelas": "SI201-A",
+      "nama_kelas": "Sistem Informasi Manajemen - Kelas A",
+      "matkul_id": "3",
+      "dosen_id": "2",
+      "semester": 3,
+      "tahun_ajaran": "2024/2025",
+      "kapasitas": 35,
+      "mahasiswa_ids": ["6", "7", "8"]
+    },
+    {
+      "id": "4",
+      "kode_kelas": "IF201-A",
+      "nama_kelas": "Pemrograman Web - Kelas A",
+      "matkul_id": "4",
+      "dosen_id": "3",
+      "semester": 3,
+      "tahun_ajaran": "2024/2025",
+      "kapasitas": 25,
+      "mahasiswa_ids": ["1", "3"]
+    }
+  ],
+  "dosen": [
+    {
+      "id": "1",
+      "nidn": "0001234567",
+      "nama": "Dr. Ahmad Suryadi, M.Kom",
+      "email": "ahmad.suryadi@university.ac.id",
+      "no_telp": "081234567890",
+      "bidang_keahlian": "Teknik Informatika",
+      "status": true,
+      "max_sks": 12
+    },
+    {
+      "id": "2",
+      "nidn": "0002345678",
+      "nama": "Prof. Siti Nurjanah, Ph.D",
+      "email": "siti.nurjanah@university.ac.id",
+      "no_telp": "081234567891",
+      "bidang_keahlian": "Sistem Informasi",
+      "status": true,
+      "max_sks": 12
+    },
+    {
+      "id": "3",
+      "nidn": "0003456789",
+      "nama": "Budi Santoso, M.T",
+      "email": "budi.santoso@university.ac.id",
+      "no_telp": "081234567892",
+      "bidang_keahlian": "Teknik Informatika",
+      "status": true,
+      "max_sks": 12
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "nama": "Admin",
+      "email": "admin@gmail.com",
+      "password": "123",
+      "role_id": "1"
+    },
+    {
+      "id": "2",
+      "nama": "Dani",
+      "email": "dani@gmail.com",
+      "password": "123",
+      "role_id": "2"
+    },
+    {
+      "id": "3",
+      "nama": "Budi Dosen",
+      "email": "budi.dosen@gmail.com",
+      "password": "123",
+      "role_id": "3"
+    },
+    {
+      "id": "4",
+      "nama": "Siti Mahasiswa",
+      "email": "siti.mhs@gmail.com",
+      "password": "123",
+      "role_id": "4"
+    }
+  ],
+  "roles": [
+    {
+      "id": "1",
+      "name": "Super Admin",
+      "description": "Full access to all features including user and role management",
+      "permissions": [
+        "user.read",
+        "user.create",
+        "user.update",
+        "user.delete",
+        "role.read",
+        "role.create",
+        "role.update",
+        "role.delete",
+        "dosen.manage",
+        "matkul.manage",
+        "mahasiswa.manage"
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Admin",
+      "description": "Can manage users and basic resources",
+      "permissions": [
+        "user.read",
+        "user.create",
+        "user.update",
+        "dosen.manage",
+        "matkul.manage",
+        "mahasiswa.manage"
+      ]
+    },
+    {
+      "id": "3",
+      "name": "Dosen",
+      "description": "Can view and manage mata kuliah",
+      "permissions": [
+        "matkul.read",
+        "mahasiswa.read"
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Mahasiswa",
+      "description": "Can view own data",
+      "permissions": [
+        "mahasiswa.read"
+      ]
+    }
+  ],
+  "matkul": [
+    {
+      "id": "1",
+      "kode_mk": "IF101",
+      "nama_mk": "Algoritma dan Pemrograman",
+      "sks": 3,
+      "semester": 1,
+      "dosen_pengampu": "Dr. Ahmad Suryadi, M.Kom",
+      "status": true
+    },
+    {
+      "id": "2",
+      "kode_mk": "IF102",
+      "nama_mk": "Basis Data",
+      "sks": 3,
+      "semester": 2,
+      "dosen_pengampu": "Dr. Ahmad Suryadi, M.Kom",
+      "status": true
+    },
+    {
+      "id": "3",
+      "kode_mk": "SI201",
+      "nama_mk": "Sistem Informasi Manajemen",
+      "sks": 3,
+      "semester": 3,
+      "dosen_pengampu": "Prof. Siti Nurjanah, Ph.D",
+      "status": true
+    },
+    {
+      "id": "4",
+      "kode_mk": "IF201",
+      "nama_mk": "Pemrograman Web",
+      "sks": 4,
+      "semester": 3,
+      "dosen_pengampu": "Budi Santoso, M.T",
+      "status": true
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
