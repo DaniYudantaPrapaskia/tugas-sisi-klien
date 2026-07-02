@@ -1,7 +1,6 @@
 import axios from 'axios';
 
-// Base URL untuk API
-const BASE_URL = 'http://localhost:3000';
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
 // Membuat instance axios dengan konfigurasi default
 const axiosInstance = axios.create({

@@ -13,7 +13,8 @@ export const getUserRole = async () => {
   if (!user || !user.role_id) return null;
 
   try {
-    const response = await fetch(`http://localhost:3000/roles/${user.role_id}`);
+    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+    const response = await fetch(`${API_URL}/roles/${user.role_id}`);
     if (!response.ok) return null;
     return await response.json();
   } catch (error) {
