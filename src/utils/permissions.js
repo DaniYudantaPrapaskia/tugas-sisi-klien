@@ -1,3 +1,5 @@
+import axiosInstance from "../api/axiosConfig";
+
 export const getUserFromStorage = () => {
   try {
     const userStr = localStorage.getItem('user');
@@ -13,10 +15,8 @@ export const getUserRole = async () => {
   if (!user || !user.role_id) return null;
 
   try {
-    const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
-    const response = await fetch(`${API_URL}/roles/${user.role_id}`);
-    if (!response.ok) return null;
-    return await response.json();
+    const response = await axiosInstance.get(`/roles/${user.role_id}`);
+    return response.data;
   } catch (error) {
     console.error('Error fetching user role:', error);
     return null;
