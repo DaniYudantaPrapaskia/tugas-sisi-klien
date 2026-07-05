@@ -4,7 +4,7 @@ const NAME = "users";
 
 export default async function handler(req, res) {
   const { method } = req;
-  const id = req.url.split("/").filter(Boolean).pop();
+  const id = req.query?.id || req.url.split("?")[0].split("/").filter(Boolean).pop();
 
   try {
     if (method === "GET") {
