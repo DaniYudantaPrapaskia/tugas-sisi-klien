@@ -7,7 +7,10 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const dbPath = join(__dirname, "..", "..", "db.json");
 const db = JSON.parse(readFileSync(dbPath, "utf-8"));
 
-const redis = Redis.fromEnv();
+const redis = new Redis({
+  url: process.env.KV_REST_API_URL,
+  token: process.env.KV_REST_API_TOKEN,
+});
 
 const collections = ["mahasiswa", "kelas", "dosen", "users", "roles", "matkul"];
 
