@@ -11,7 +11,8 @@ function collectionKey(name) {
 
 export async function getAll(name) {
   const data = await redis.get(collectionKey(name));
-  return data || [];
+  if (!data) return [];
+  return Array.isArray(data) ? data : JSON.parse(data);
 }
 
 export async function getById(name, id) {

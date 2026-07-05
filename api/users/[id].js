@@ -3,8 +3,8 @@ import { getById, update, remove } from "../_lib/kv.js";
 const NAME = "users";
 
 export default async function handler(req, res) {
-  const { method, query } = req;
-  const id = query.id;
+  const { method } = req;
+  const id = req.url.split("/").filter(Boolean).pop();
 
   try {
     if (method === "GET") {
