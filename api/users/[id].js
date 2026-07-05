@@ -2,32 +2,35 @@ import { getById, update, remove } from "../_lib/kv.js";
 
 const NAME = "users";
 
-export default async function handler(request) {
-  const { method, nextUrl } = request;
-  const id = nextUrl.pathname.split("/").pop();
+export default async function handler(req, res) {
+  const { method, query } = req;
+  const id = query.id;
 
   try {
     if (method === "GET") {
       const item = await getById(NAME, id);
-      if (!item) return Response.json({ error: "Not found" }, { status: 404 });
-      return Response.json(item);
+      if (!item) return res.status(404).json({ error: "Not found" });
+      return res.status(200).json(item);
     }
 
     if (method === "PUT") {
-      const body = await request.json();
-      const updated = await update(NAME, id, body);
-      if (!updated) return Response.json({ error: "Not found" }, { status: 404 });
-      return Response.json(updated);
+      const updated = await update(NAME, id, req.body);
+      if (!updated) return res.status(404).json({ error: "Not found" });
+      return res.status(200).json(updated);
     }
 
     if (method === "DELETE") {
       const deleted = await remove(NAME, id);
-      if (!deleted) return Response.json({ error: "Not found" }, { status: 404 });
-      return Response.json({ success: true });
+      if (!deleted) return res.status(404).json({ error: "Not found" });
+      return res.status(200).json({ success: true });
     }
 
-    return Response.json({ error: "Method not allowed" }, { status: 405 });
+    if (method === "OPTIONS") {
+      return res.status(200).end();
+    }
+
+    return res.status(405).json({ error: "Method not allowed" });
   } catch (error) {
-    return Response.json({ error: error.message }, { status: 500 });
+    return res.status(500).json({ error: error.message });
   }
 }
