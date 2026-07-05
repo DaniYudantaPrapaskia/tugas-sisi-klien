@@ -1,8 +1,9 @@
 import axios from 'axios';
 
-const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+const BASE_URL = import.meta.env.PROD
+  ? '/api'
+  : (import.meta.env.VITE_API_URL || 'http://localhost:3000');
 
-// Membuat instance axios dengan konfigurasi default
 const axiosInstance = axios.create({
   baseURL: BASE_URL,
   timeout: 10000,
@@ -11,14 +12,8 @@ const axiosInstance = axios.create({
   },
 });
 
-// Request interceptor untuk menambahkan token atau logging
 axiosInstance.interceptors.request.use(
   (config) => {
-    // Bisa menambahkan token authentication di sini jika diperlukan
-    // const token = localStorage.getItem('token');
-    // if (token) {
-    //   config.headers.Authorization = `Bearer ${token}`;
-    // }
     return config;
   },
   (error) => {
@@ -26,20 +21,16 @@ axiosInstance.interceptors.request.use(
   }
 );
 
-// Response interceptor untuk handle error secara global
 axiosInstance.interceptors.response.use(
   (response) => {
     return response;
   },
   (error) => {
     if (error.response) {
-      // Server merespons dengan status error
       console.error('Response error:', error.response.data);
     } else if (error.request) {
-      // Request dibuat tapi tidak ada response
       console.error('Request error:', error.request);
     } else {
-      // Error dalam setup request
       console.error('Error:', error.message);
     }
     return Promise.reject(error);
